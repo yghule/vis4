@@ -1,0 +1,15 @@
+h1 {
+                color: #00F600; 
+                font-size: 48px;
+            }
+
+p {
+    color: skyblue;
+    font-size: 15px;
+}
+
+button {
+    padding: 20px 40px;
+    border-radius: 50px;
+    border: 0;
+}
