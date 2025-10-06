@@ -37,7 +37,7 @@ function removeHistoryItem(index) {
 
 function updateSummary() {
   document.querySelector("#summary").innerHTML =
-    `Total additions: ${operationCount.additions}, <br> Total subtractions: ${operationCount.subtractions}`;
+  "Total additions: " + operationCount.additions + " <br> Total subtractions: " + operationCount.subtractions;
 }
 
 function checkTotal() {
