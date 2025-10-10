@@ -1,4 +1,5 @@
 import logo from './logo.svg';
+import Navbar from './navbar.jsx';
 import './App.css';
 
 function App() {
@@ -7,8 +8,11 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Yash is editing this code <code>src/App.js</code> and save to reload.
         </p>
+
+        <Navbar headerTitle="This is a Navbar" />
+
         <a
           className="App-link"
           href="https://reactjs.org"
