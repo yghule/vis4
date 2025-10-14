@@ -1,0 +1,55 @@
+/* Result number block */
+#resultId {
+  font-size: 45px;
+  margin: 16px 0 0;
+  padding: 20px;
+  border-radius: 10px;
+  background: white; /* default, updated inline from React */
+  transition: background 0.3s ease;
+}
+
+/* Controls (button row) */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.controls button {
+  padding: 12px 22px;
+  border: none;
+  border-radius: 10px;
+  background: #bcbcbc;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.06s ease, background 0.2s ease;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+}
+
+.controls button:hover { background: #a8a8a8; }
+.controls button:active { transform: scale(0.98); }
+
+/* History list */
+#historyList {
+  margin: 10px 0 16px;
+  padding-left: 18px;
+}
+#historyList li {
+  cursor: pointer;
+  margin: 4px 0;
+  user-select: none;
+}
+
+/* Clear All button */
+#clearAllBtn {
+  margin-top: 8px;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 8px;
+  background: #c7c7c7;
+  font-weight: 600;
+  cursor: pointer;
+}
+#clearAllBtn:hover { background: #b6b6b6; }

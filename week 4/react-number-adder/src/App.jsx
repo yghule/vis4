@@ -1,20 +1,27 @@
+import React from "react";
+import ControlCenter from "./Components/ControlCenter.jsx";
+import ResultBar from "./Components/ResultBar.jsx";
+import "./Styles/index.css";
 
-import './App.css';
-import Header from './Header';
-import Sidebar from './Sidebar';
-import MainContent from './MainContent';
 
-
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <Header/>
-      <div class="page">
-        <Sidebar />
-        <MainContent />
-      </div>
-    </div>
-  )
-}
+    <>
+      {/* Header */}
+      <header id="header">
+        <div className="header-flex">
+          <h1>Yash's Number Adder</h1>
+          <h4>Item 1</h4>
+          <h4>Item 2</h4>
+          <h4>Item 3</h4>
+        </div>
+      </header>
 
-export default App;
+      {/* Page wrapper (sidebar + main) */}
+      <div className="page">
+        <ResultBar />
+        <ControlCenter />
+      </div>
+    </>
+  );
+}
