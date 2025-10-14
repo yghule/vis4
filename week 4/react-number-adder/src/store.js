@@ -6,10 +6,10 @@ export const ADD_2 = "ADD_2";
 export const REMOVE_1 = "REMOVE_1";
 export const REMOVE_2 = "REMOVE_2";
 export const RESET = "RESET";
-export const UPDATE_HISTORY = "UPDATE_HISTORY"; // remove history item by index (bonus: recompute)
+export const UPDATE_HISTORY = "UPDATE_HISTORY"; // remove history item by index
 export const CLEAR_ALL = "CLEAR_ALL";
 
-/** INITIAL STATE — mirrors Week 3 */
+/** INITIAL STATE */
 const initialState = {
   count: 0,                // same as "total"
   history: [],             // e.g., "+1", "-2", "Reset"

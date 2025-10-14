@@ -7,8 +7,7 @@ export default function ResultBar() {
   const count = useSelector((s) => s.count);
   const history = useSelector((s) => s.history);
 
-  // Derive operation counts (like your Week 3 operationCount)
-  // We count the number of addition/subtraction actions, not their magnitudes.
+  // Derive operation counts
   const { additions, subtractions } = useMemo(() => {
     let adds = 0, subs = 0;
     for (const h of history) {
@@ -19,13 +18,13 @@ export default function ResultBar() {
     return { additions: adds, subtractions: subs };
   }, [history]);
 
-  // Status message (same logic)
+  // Status message 
   const totalMessage =
     count > 0 ? "The total is positive." :
     count < 0 ? "The total is negative." :
     "The total is zero.";
 
-  // Background color for result box (same behavior)
+  // Background color for result box
   const resultBg =
     count > 0 ? "lightgreen" :
     count < 0 ? "lightcoral" :
@@ -38,7 +37,7 @@ export default function ResultBar() {
 
       <h3>Summary</h3>
       <div id="summary">
-        {/* Keep your exact copy + line break structure */}
+        {/* Line break structure */}
         Total additions: {additions},<br /> Total subtractions: {subtractions}
       </div>
 
