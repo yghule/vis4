@@ -9,11 +9,11 @@ export default function ControlCenter() {
     <main id="main-content" className="bucket bolded">
       <h3>Control Center</h3>
       <div className="controls">
-        <button id="btnMinus2" onClick={() => dispatch({ type: REMOVE_2 })}>-2</button>
-        <button id="btnMinus1" onClick={() => dispatch({ type: REMOVE_1 })}>-1</button>
-        <button id="btnReset"  onClick={() => dispatch({ type: RESET })}>Reset</button>
-        <button id="btnPlus1"  onClick={() => dispatch({ type: ADD_1 })}>+1</button>
-        <button id="btnPlus2"  onClick={() => dispatch({ type: ADD_2 })}>+2</button>
+        <button id="btnMinus2" onClick={() => dispatch({ type: REMOVE_2, payload: '-2' })}>-2</button>
+        <button id="btnMinus1" onClick={() => dispatch({ type: REMOVE_1, payload: '-1'  })}>-1</button>
+        <button id="btnReset"  onClick={() => dispatch({ type: RESET, payload: 'Reset' })}>Reset</button>
+        <button id="btnPlus1"  onClick={() => dispatch({ type: ADD_1, payload: '+1' })}>+1</button>
+        <button id="btnPlus2"  onClick={() => dispatch({ type: ADD_2, payload: '+2' })}>+2</button>
       </div>
 
       <button
