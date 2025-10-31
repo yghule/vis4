@@ -1,0 +1,449 @@
+/* =======================================================
+   GLOBAL / RESET
+   ======================================================= */
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  background: #CFE0E6;
+  color: #161819;
+  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont,
+               "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* =======================================================
+   DESIGN TOKENS
+   ======================================================= */
+:root {
+  /* colors */
+  --bg: #CFE0E6;
+  --text: #161819;
+  --muted: #6B7378;
+
+  --chip-bg: #E6EEF1;
+  --chip-dark: #1F2225;
+
+  --card-dark: #5E666C;
+  --card-mint: #BFECC0;
+  --card-sky: #A7D8F3;
+
+  --accent: #BFE6F0;
+
+  /* radii */
+  --radius-2xl: 36px;
+  --radius-xl: 28px;
+  --radius-lg: 22px;
+  --radius-md: 18px;
+  --radius-sm: 12px;
+}
+
+/* =======================================================
+   DEVICE FRAME (430 × 932)
+   ======================================================= */
+.viewport {
+  width: 100vw;
+  height: 100vh;
+  background: #E7ECEF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.device-frame {
+  width: 100%;
+  max-width: 460px;     /* with bezel */
+  height: auto;
+  aspect-ratio: 430 / 932;
+  background: #0C0C0C;
+  border-radius: 56px;
+  padding: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-shell {
+  width: 430px;
+  height: 932px;
+  margin: 0 auto;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+}
+.screen {
+  flex: 1;
+  padding: 22px 18px 28px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =======================================================
+   TYPOGRAPHY
+   ======================================================= */
+.h1 {
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+.sub {
+  color: var(--muted);
+  font-size: 16px;
+  font-weight: 400;
+}
+
+/* =======================================================
+   TOP ICONS
+   ======================================================= */
+.top-icons {
+  display: flex;
+  justify-content: space-between;
+  padding: 2px 2px 16px;
+}
+.icon-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #E6EEF1;
+  display: grid;
+  place-items: center;
+  color: var(--text);
+  font-size: 20px;
+  border: none;
+}
+
+/* =======================================================
+   CHIPS & PILLS
+   ======================================================= */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 15px;
+  background: var(--chip-bg);
+  color: var(--text);
+  border: none;
+}
+.chip.dark {
+  background: var(--chip-dark);
+  color: #FFFFFF;
+}
+
+/* =======================================================
+   CARDS
+   ======================================================= */
+.card {
+  border-radius: var(--radius-xl);
+  border: none;
+  overflow: hidden;
+}
+.card.pad {
+  padding: 18px;
+}
+.card.dark { background: var(--card-dark); color: #EAF0F3; }
+.card.mint { background: var(--card-mint); color: #0B0F12; }
+.card.sky  { background: var(--card-sky);  color: #0B0F12; }
+/* =======================================================
+   BUTTONS
+   ======================================================= */
+.btn {
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity .15s ease;
+}
+.btn:hover { opacity: 0.9; }
+.btn.black { background: var(--chip-dark); color: #fff; }
+.btn.aqua  { background: var(--accent); color: #0B1114; }
+.btn.ghost {
+  background: transparent;
+  border: 1px solid rgba(0,0,0,0.12);
+  color: inherit;
+}
+
+/* =======================================================
+   METER PILL (Hydration / Mix)
+   ======================================================= */
+.meter {
+  height: 60px;
+  border-radius: 30px;
+  background: #2A2F33;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.meter .dots {
+  display: flex;
+  flex: 1;
+  gap: 14px;
+  justify-content: flex-start;
+}
+.meter .dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.4;
+}
+.meter .dot.active { opacity: 1; }
+.knob {
+  width: 54px;
+  height: 38px;
+  border-radius: 22px;
+  background: var(--chip-dark);
+  color: #fff;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+}
+
+/* ===== Slider pill (for Electrolyte Mix) ===== */
+.slider-pill{
+  position: relative;
+  height: 64px;
+  border-radius: 32px;
+  background: #2A2F33;          
+  display: flex;
+  align-items: center;
+  padding: 0 18px;
+}
+
+/* Native range input, fully custom look */
+.slider{
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  background: transparent;
+  outline: none;
+  height: 24px;                  /* thumb travel area */
+  position: relative;
+  z-index: 2;                    /* above dots */
+  margin: 0;
+}
+
+/* Track */
+.slider::-webkit-slider-runnable-track{
+  height: 8px;
+  background: transparent;
+}
+.slider::-moz-range-track{
+  height: 8px;
+  background: transparent;
+}
+
+
+/* Thumb */
+.slider::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  appearance: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: #111;              /* black pill knob */
+  border: 2px solid rgba(255,255,255,0.08);
+  box-shadow: inset 0 0 0 12px #BFE6F0; 
+  margin-top: -18px;             /* center on track */
+  cursor: pointer;
+}
+
+transition: background 0.25s ease, box-shadow 0.25s ease;
+
+.slider::-moz-range-thumb{
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: #111;
+  border: 2px solid rgba(255,255,255,0.08);
+  box-shadow: inset 0 0 0 12px #BFE6F0;
+  cursor: pointer;
+}
+
+/* ===== Slider thumb color change when on 60% ===== */
+
+/* WebKit browsers (Chrome, Safari, Edge) */
+.slider.onRecommended::-webkit-slider-thumb {
+  background: #8EE39C; 
+  box-shadow: inset 0 0 0 12px #8EE39C, 0 0 8px rgba(142, 227, 156, 0.4);
+}
+
+/* Firefox */
+.slider.onRecommended::-moz-range-thumb {
+  background: #8EE39C;
+  box-shadow: inset 0 0 0 12px #8EE39C, 0 0 8px rgba(142, 227, 156, 0.4);
+}
+
+
+/* Dots under the track (0,20,40,60,80) */
+.slider-dots{
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.slider-dot {
+  background: #C8F0FA; 
+}
+
+
+.slider-dot{
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: #BFE6F0;          
+  opacity: .45;
+  justify-self: center;
+}
+
+.slider-dot.active{ opacity: 1; }
+
+/* Normal dots */
+.slider-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #BFE6F0;     
+  opacity: .45;
+  transition: all .2s ease;
+}
+
+/* Filled dots */
+.slider-dot.active { opacity: 1; }
+
+/* 60% recommended dot */
+.slider-dot.recommended {
+  width: 18px;             
+  height: 18px;
+  background: #8EE39C;     
+  box-shadow: 0 0 0 3px rgba(142, 227, 156, 0.3); 
+}
+
+
+
+/* =======================================================
+   TOGGLE
+   ======================================================= */
+.toggle {
+  width: 64px;
+  height: 36px;
+  border-radius: 999px;
+  background: #AAB7BD;
+  border: none;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  cursor: pointer;
+}
+.toggle.on {
+  background: #8EE39C;
+  justify-content: flex-end;
+}
+.toggle .thumb {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+/* =======================================================
+   MINI STAT (Live Run)
+   ======================================================= */
+.stats { display: flex; gap: 12px; flex-wrap: wrap; }
+.stat {
+  background: var(--chip-bg);
+  border-radius: 24px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #22c55e;
+  animation: connectFade 2.4s ease-in-out infinite;
+}
+
+@keyframes connectFade {
+  0%, 100% { opacity: 0.4; }
+  50%      { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .status-dot {
+    animation: none;
+  }
+}
+
+/* =======================================================
+   BOTTOM NAV BAR
+   ======================================================= */
+.bottom-bar {
+  width: 280px;
+  margin: 0 auto;
+  margin-top: auto;
+  background: #70787E;
+  border-radius: 999px;
+  padding: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: none;
+}
+.nav-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: transparent;
+  color: rgba(234, 240, 243, 0.8);
+  display: grid;
+  place-items: center;
+  border: none;
+  cursor: pointer;
+  font-size: 22px;
+}
+.nav-btn.active {
+  background: #FFFFFF;
+  color: #111111;
+}
+
+.nav-btn img {
+  opacity: 0.6;
+  transition: opacity 0.2s ease, filter 0.2s ease;
+}
+.nav-btn.active img {
+  opacity: 1;
+  filter: brightness(1) invert(0); /* makes black icons white on active circle */
+}
+
+/* =======================================================
+   UTILITIES
+   ======================================================= */
+.row { display: flex; align-items: center; gap: 12px; }
+.space { flex: 1; }
+.center { display: grid; place-items: center; }
+.fade-in { animation: fadein .25s ease both; opacity: 0; }
+@keyframes fadein { to { opacity: 1; } }
